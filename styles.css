@@ -5,6 +5,58 @@ body {
     overflow: hidden;
 }
 
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 50px;
+    background-color: rgb(45, 45, 45);
+}
+
+.sidebar .color-picker{
+    background-color: black;
+    display: block;
+    border: none;
+    outline: rgb(red, rgb(255, 255, 255), blue);
+    margin: 10;
+    padding: 15px 15px;
+    border-radius: 15px;
+}
+
+.sidebar .color-picker:hover{
+    outline: rgb(179, 179, 179);
+    outline-offset: 2px;
+}
+
+.sidebar .color-picker:active{
+    background-color: rgb(179, 179, 179);
+}
+
+.sidebar .color-picker:focus{
+    outline: 0;
+}
+
 .p5Canvas {
+    position: fixed;
+    left: 50;
     cursor: none;
+}
+
+.color-picker.white {
+    background-color: white
+}
+
+.color-picker.red {
+    background-color: rgb(187, 47, 47)
+}
+
+.color-picker.green {
+    background-color: rgb(17, 141, 17)
+}
+
+.color-picker.blue {
+    background-color: rgb(57, 59, 202)
+}
+
+.color-picker.black {
+    background-color: rgb(30, 30, 30)
 }

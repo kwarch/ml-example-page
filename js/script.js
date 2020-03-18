@@ -5,8 +5,8 @@ let rects = [],
     currentElement = null;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-
+    let canvas = createCanvas(windowWidth - 50, windowHeight);
+    canvas.parent(document.querySelector('.canvas-wrapper'));
 }
 
 function draw() {
