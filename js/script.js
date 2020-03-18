@@ -1,17 +1,45 @@
 'use strict';
 
-let size = 10.5;
+let rects = [],
+    isDrawing = false,
+    currentElement = null;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    // noLoop();
+
 }
 
 function draw() {
     background(30);
     fill(240);
+
+    if (rects.length > 0) {
+        rects.forEach(element => element.show());
+    }
+    if (currentElement != null) {
+        currentElement.setEndpoint();
+        currentElement.show();
+    }
+
+    drawCursor();
+    
+}
+
+function mousePressed() {
+    currentElement = new Rect();
+}
+
+function mouseReleased() {
+    rects.push(currentElement);
+    currentElement = null;
+}
+
+function drawCursor() {
+    let size = 5.5;
+
     strokeWeight(0.5);
     stroke(240);
+
     line(mouseX, 0, mouseX, mouseY - size);
     line(mouseX, mouseY + size, mouseX, height);
 
@@ -24,8 +52,29 @@ function draw() {
     ellipse(mouseX, mouseY, size * 2, size * 2);
 }
 
-function mousePressed() {
-    
-    redraw(4);
-  }
+class Rect {
+    constructor() {
+        this.startPoint = {
+            x: mouseX,
+            y: mouseY
+        };
+        this.color = 250;
+    }
 
+    setEndpoint() {
+        this.endPoint = {
+            x: mouseX - this.startPoint.x,
+            y: mouseY - this.startPoint.y
+        };
+    }
+
+    show() {
+        fill(this.color);
+        noStroke();
+        rect(
+            this.startPoint.x,
+            this.startPoint.y,
+            this.endPoint.x,
+            this.endPoint.y);
+    }
+}
