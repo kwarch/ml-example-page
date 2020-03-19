@@ -12,7 +12,7 @@ body {
     background-color: rgb(45, 45, 45);
 }
 
-.sidebar .color-picker{
+.sidebar .color-preset{
     background-color: black;
     display: block;
     border: none;
@@ -22,17 +22,24 @@ body {
     border-radius: 15px;
 }
 
-.sidebar .color-picker:hover{
-    outline: rgb(179, 179, 179);
-    outline-offset: 2px;
+.sidebar .color-preset:hover{
+    border: 2px solid rgb(200, 200, 200);
+    padding: 13px 13px;
 }
 
-.sidebar .color-picker:active{
-    background-color: rgb(179, 179, 179);
+.sidebar .color-preset:active{
+    border: 4px solid rgb(179, 179, 179);
+    padding: 11px 11px;
 }
 
-.sidebar .color-picker:focus{
+.sidebar .color-preset:focus{
     outline: 0;
+}
+
+.color-preset.selected {
+    
+    border: 2px solid rgb(120, 120, 120);
+    padding: 13px 13px;
 }
 
 .p5Canvas {
@@ -41,22 +48,23 @@ body {
     cursor: none;
 }
 
-.color-picker.white {
-    background-color: white
+.color-preset.white {
+    background-color: rgb(250, 250, 250)
 }
 
-.color-picker.red {
+.color-preset.red {
     background-color: rgb(187, 47, 47)
 }
 
-.color-picker.green {
+.color-preset.green {
     background-color: rgb(17, 141, 17)
 }
 
-.color-picker.blue {
+.color-preset.blue {
     background-color: rgb(57, 59, 202)
 }
 
-.color-picker.black {
+.color-preset.black {
     background-color: rgb(30, 30, 30)
 }
+

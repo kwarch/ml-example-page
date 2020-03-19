@@ -1,8 +1,60 @@
 'use strict';
 
+class Rect {
+    constructor(color) {
+        this.startPoint = {
+            x: mouseX,
+            y: mouseY
+        };
+        this.color = color;
+    }
+
+    setEndpoint() {
+        this.endPoint = {
+            x: mouseX - this.startPoint.x,
+            y: mouseY - this.startPoint.y
+        };
+    }
+
+    show() {
+        fill(this.color);
+        noStroke();
+        rect(
+            this.startPoint.x,
+            this.startPoint.y,
+            this.endPoint.x,
+            this.endPoint.y);
+    }
+}
+
+class ColorPicker {
+    constructor(colorPickerDiv){
+        this.buttons = colorPickerDiv.querySelectorAll('.color-preset');
+        this.setColor(250);
+        this.buttons.forEach(
+            element => element.addEventListener('click', (event) =>{
+                this.selectColor(event.target);
+            }
+        ));
+    }
+
+    selectColor(target) {
+        let color = window.getComputedStyle(target).backgroundColor;
+        this.setColor(color);
+        this.buttons.forEach(element => element.classList.remove('selected'));
+        target.classList.add('selected');
+    }
+
+    setColor(color){
+        this.currentColor = color;
+    }
+}
+
+
 let rects = [],
     isDrawing = false,
-    currentElement = null;
+    currentElement = null,
+    colorPicker = new ColorPicker(document.querySelector('.color-picker'));
 
 function setup() {
     let canvas = createCanvas(windowWidth - 50, windowHeight);
@@ -26,7 +78,7 @@ function draw() {
 }
 
 function mousePressed() {
-    currentElement = new Rect();
+    currentElement = new Rect(colorPicker.currentColor);
 }
 
 function mouseReleased() {
@@ -38,7 +90,7 @@ function drawCursor() {
     let size = 5.5;
 
     strokeWeight(0.5);
-    stroke(240);
+    stroke(130);
 
     line(mouseX, 0, mouseX, mouseY - size);
     line(mouseX, mouseY + size, mouseX, height);
@@ -49,32 +101,5 @@ function drawCursor() {
 
     noFill();
     strokeWeight(0.5);
-    ellipse(mouseX, mouseY, size * 2, size * 2);
 }
 
-class Rect {
-    constructor() {
-        this.startPoint = {
-            x: mouseX,
-            y: mouseY
-        };
-        this.color = 250;
-    }
-
-    setEndpoint() {
-        this.endPoint = {
-            x: mouseX - this.startPoint.x,
-            y: mouseY - this.startPoint.y
-        };
-    }
-
-    show() {
-        fill(this.color);
-        noStroke();
-        rect(
-            this.startPoint.x,
-            this.startPoint.y,
-            this.endPoint.x,
-            this.endPoint.y);
-    }
-}
