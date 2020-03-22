@@ -8,18 +8,28 @@
 <body>
     <div class="container">
         <div class="draw-area">
-            <div class="sidebar">
-                <div class="color-picker">
-                    <button class="color-preset black selected"></button>
-                    <button class="color-preset white"></button>
-                    <button class="color-preset red"></button>
-                    <button class="color-preset green"></button>
-                </div>
-            </div>
+          
             <div class="canvas-wrapper"></div>
             <img class="output-image" width="256" height="256">
         </div>
-
+            <div class="color-picker">
+                <div>
+                    <button class="color-preset white"></button>
+                    <p>Void</p>
+                  </div>
+                <div>
+                    <button class="color-preset black selected"></button>
+                    <p>Floor</p>
+                </div>
+                <div>
+                    <button class="color-preset green"></button>
+                    <p>Entr.</p>
+                </div>
+                <div>
+                    <button class="color-preset red"></button>
+                    <p>Window</p>
+                </div>
+            </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
     <script src="js/script.js"></script>
