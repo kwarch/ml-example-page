@@ -30,7 +30,7 @@ class Rect {
 class ColorPicker {
     constructor(colorPickerDiv){
         this.buttons = colorPickerDiv.querySelectorAll('.color-preset');
-        this.setColor(250);
+        this.setColor(0);
         this.buttons.forEach(
             element => element.addEventListener('click', (event) =>{
                 this.selectColor(event.target);
@@ -57,12 +57,12 @@ let rects = [],
     colorPicker = new ColorPicker(document.querySelector('.color-picker'));
 
 function setup() {
-    let canvas = createCanvas(windowWidth - 50, windowHeight);
+    let canvas = createCanvas(256, 256);
     canvas.parent(document.querySelector('.canvas-wrapper'));
 }
 
 function draw() {
-    background(30);
+    background(255);
     fill(240);
 
     if (rects.length > 0) {
