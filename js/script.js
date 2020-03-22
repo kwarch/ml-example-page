@@ -5,6 +5,7 @@ class Rect {
         this.startPoint = {
             x: mouseX,
             y: mouseY
+            
         };
         this.color = color;
     }
@@ -87,19 +88,20 @@ function mouseReleased() {
 }
 
 function drawCursor() {
-    let size = 5.5;
-
-    strokeWeight(0.5);
-    stroke(130);
-
-    line(mouseX, 0, mouseX, mouseY - size);
-    line(mouseX, mouseY + size, mouseX, height);
-
-    line(0, mouseY, mouseX - size, mouseY);
-    line(mouseX + size, mouseY, width, mouseY);
-
-
-    noFill();
-    strokeWeight(0.5);
+    if (mouseX > 0 && mouseX < 256 && mouseY > 0 && mouseY < 256) {
+        let size = 5.5;
+        strokeWeight(0.5);
+        stroke(130);
+    
+        line(mouseX, 0, mouseX, mouseY - size);
+        line(mouseX, mouseY + size, mouseX, height);
+    
+        line(0, mouseY, mouseX - size, mouseY);
+        line(mouseX + size, mouseY, width, mouseY);
+    
+    
+        noFill();
+        strokeWeight(0.5);
+    }
 }
 
